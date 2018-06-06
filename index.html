@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>vue-tutorials</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body>
+  	<style>
+    	[v-cloak] { display: none; }
+    	.hidden { display: none; }
+    </style>
+    <div id="vmodel" class="hidden">
+    	<!-- 
+    	trim: Fazla boşlukların alınmasını engelliyor 
+
+    	-->
+    	<input type="text" v-model.trim="message" />
+    	<button @click="log">Log to console</button>
+    	<button @click="setValue">Set value</button>
+
+    	<select v-model="selectedVal">
+    		<option value="foo">Foo</option>
+    		<option value="bar">Bar</option>
+    		<option value="baz">Baz</option>
+    	</select>
+    	<input type="checkbox" v-model="isSelected" />
+    </div>
+    <div id="vcloak" class="hidden" v-cloak>
+    	<ul>
+    		<li v-for="user in users">
+    			{{user.name}}
+    		</li>
+    	</ul>
+    </div>
+    <div id="slots" class="hidden">
+    	<v-select>
+    		<v-option value="Foo">Foo</v-option>
+    		<v-option value="Bar">Bar</v-option>
+    		<v-option value="Baz">Baz</v-option>
+    	</v-select>
+    </div>
+    <div id="nextTick" class="hidden">
+    	{{message}}
+    	<button @click="change">Change</button>
+    </div>
+    <div id="modifiers" class="hidden">
+    	<a href="/foo" @click.prevent="log">Go to Foo</a>
+    	<button @click.once="log">Button</button>
+
+    	<input @keyup.alt.shift.enter="log" />
+    	<input @keyup.a="log" />
+    </div>
+
+    <div id="filters">
+    	<p>{{name | uppercase}}</p>
+    	<p>{{price | withTax | uppercase}}</p>
+    </div>
+
+  </body>
+</html>
